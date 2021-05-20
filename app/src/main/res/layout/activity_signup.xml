@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/main_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".users.SignupActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/header_rel"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <ImageView
+            android:id="@+id/back_img"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:padding="@dimen/_12sdp"
+            android:src="@drawable/ic_back_arrow"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:background="@drawable/app_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/app_logo"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                //Name
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_Name"
+                    style="@style/txt_ip_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_name"
+                    android:theme="@style/txt_TextInAppearance"
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:singleLine="true"
+                        android:textColor="@color/blue"
+                        android:fontFamily="@font/roboto_regular"
+                        android:theme="@style/txt_EditInAppearance" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                //Mobile
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_Mobile"
+                    style="@style/txt_ip_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_mobile_number"
+                    android:theme="@style/txt_TextInAppearance"
+                    app:errorEnabled="true"
+                    android:layout_below="@+id/tl_Name"
+                    android:fontFamily="@font/roboto_regular"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_Mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:singleLine="true"
+                        android:textColor="@color/blue"
+                        android:fontFamily="@font/roboto_regular"
+                        android:theme="@style/txt_EditInAppearance" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                //employe_code
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_employe_code"
+                    style="@style/txt_ip_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/lbl_employe_code"
+                    android:theme="@style/txt_TextInAppearance"
+                    app:errorEnabled="true"
+                    android:fontFamily="@font/roboto_regular"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_below="@+id/tl_Mobile">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_employe_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textAllCaps="true"
+                        android:singleLine="true"
+                        android:textColor="@color/blue"
+                        android:fontFamily="@font/roboto_regular"
+                        android:theme="@style/txt_EditInAppearance" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+              <!--  //mpin
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_Mpin"
+                    style="@style/txt_ip_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_otp"
+                    android:theme="@style/txt_TextInAppearance"
+                    app:errorEnabled="true"
+                    android:fontFamily="@font/roboto_regular"
+                    android:layout_below="@+id/tl_Mobile"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_Mpin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:singleLine="true"
+                        android:fontFamily="@font/roboto_regular"
+                        android:theme="@style/txt_EditInAppearance" />
+
+                </com.google.android.material.textfield.TextInputLayout>-->
+
+
+                <Button
+                    android:id="@+id/btnContinue"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:background="@drawable/bg_btn_shape"
+                    android:layout_below="@+id/tl_employe_code"
+                    android:fontFamily="@font/roboto_medium"
+                    android:shadowColor="@color/blue"
+                    android:text="@string/lbl_signup"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_14"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_15sdp"/>
+
+                <RelativeLayout
+                    android:id="@+id/login_in_rel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btnContinue"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_15sdp">
+
+                    <TextView
+                        android:id="@+id/txt_already"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/text_already_account"
+                        android:textColor="@color/textHeader"
+                        android:layout_toLeftOf="@+id/txt_login"
+                        android:textSize="@dimen/text_14" />
+
+                    <TextView
+                        android:id="@+id/txt_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/text_login"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:textSize="@dimen/text_14" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/loading_layout"/>
+
+</RelativeLayout>

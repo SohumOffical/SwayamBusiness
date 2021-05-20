@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/main_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.notifications.NotificationActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:elevation="@dimen/_5sdp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/ic_back_arrow"
+            app:tint="@color/textHeader" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/ivBack"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:singleLine="true"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/lbl_notification"
+            android:textColor="@color/textHeader"
+            android:textSize="@dimen/text_18" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/bottomNavigation">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_notification_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <com.naimee.swayam.utlis.theme3bottomnavigation.BottomNavigation
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:bn_backgroundBottomColor="#ffffff"
+        app:bn_countBackgroundColor="@color/colorPrimary"
+        app:bn_countTextColor="#ffffff"
+        app:bn_defaultIconColor="@color/textHeader"
+        app:bn_rippleColor="#2f424242"
+        app:bn_selectedIconColor="@color/colorPrimary"
+        app:bn_shadowColor="#E2E2E2" />
+
+    <include layout="@layout/loading_layout"/>
+
+    <include layout="@layout/query_detail_layout"/>
+
+</RelativeLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/main_promotion_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.onboarding.promos.PromotionManagementActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:elevation="@dimen/_5sdp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/ic_back_arrow"
+            app:tint="@color/textHeader" />
+
+        <EditText
+            android:id="@+id/serach_et"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/contact_shape_black_deselected"
+            android:fontFamily="@font/roboto_regular"
+            android:singleLine="true"
+            android:text=""
+            android:layout_toRightOf="@+id/ivBack"
+            android:drawableLeft="@drawable/ic_serach"
+            android:drawablePadding="@dimen/_10sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14"
+            android:layout_margin="@dimen/_8sdp"/>
+
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/bottomNavigation"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginLeft="@dimen/_8sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+          <androidx.recyclerview.widget.RecyclerView
+              android:id="@+id/my_promotion_rv"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.naimee.swayam.utlis.theme3bottomnavigation.BottomNavigation
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:bn_backgroundBottomColor="#ffffff"
+        app:bn_countBackgroundColor="@color/colorPrimary"
+        app:bn_countTextColor="#ffffff"
+        app:bn_defaultIconColor="@color/textHeader"
+        app:bn_rippleColor="#2f424242"
+        app:bn_selectedIconColor="@color/colorPrimary"
+        app:bn_shadowColor="#E2E2E2" />
+
+    <include layout="@layout/loading_layout"/>
+
+</RelativeLayout>

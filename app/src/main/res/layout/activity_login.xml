@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/main_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".users.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/loginbg"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:background="@color/light_blue"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_80sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/text_you_want_to"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_18" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/app_name_display"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_24" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/signup_to_conitnue"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp">
+
+                        <TextView
+                            android:id="@+id/login_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/lbl_login"
+                            android:textAllCaps="true"
+                            android:gravity="center"
+                            android:textColor="@color/drak_blue"
+                            android:textSize="@dimen/text_16"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/signup_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/signup"
+                            android:textAllCaps="true"
+                            android:gravity="center"
+                            android:textColor="@color/drak_blue"
+                            android:textSize="@dimen/text_16"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_30sdp">
+
+                        //Mobile
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_Mobile"
+                            style="@style/txt_ip_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_enter_10_digits_mobile_number"
+                            android:theme="@style/txt_TextInAppearance"
+                            app:errorEnabled="true"
+                            android:fontFamily="@font/roboto_regular">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_Mobile"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:inputType="number"
+                                android:maxLength="10"
+                                android:paddingLeft="@dimen/_20sdp"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:drawableLeft="@drawable/ic_phone_call"
+                                android:singleLine="true"
+                                android:textColor="@color/drak_blue"
+                                android:theme="@style/txt_EditInAppearance" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        //Name
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_Name"
+                            style="@style/txt_ip_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_name"
+                            android:theme="@style/txt_TextInAppearance"
+                            app:errorEnabled="true"
+                            android:layout_marginTop="@dimen/_10sdp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_Name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPersonName"
+                                android:singleLine="true"
+                                android:paddingLeft="@dimen/_20sdp"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:drawableLeft="@drawable/ic_user_shape"
+                                android:textColor="@color/drak_blue"
+                                android:fontFamily="@font/roboto_regular"
+                                android:theme="@style/txt_EditInAppearance" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        //employe_code
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_employe_code"
+                            style="@style/txt_ip_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/lbl_employe_code"
+                            android:theme="@style/txt_TextInAppearance"
+                            app:errorEnabled="true"
+                            android:fontFamily="@font/roboto_regular"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_below="@+id/tl_Mobile">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_employe_code"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textAllCaps="true"
+                                android:singleLine="true"
+                                android:textColor="@color/drak_blue"
+                                android:paddingLeft="@dimen/_20sdp"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:drawableLeft="@drawable/ic_employ_code"
+                                android:fontFamily="@font/roboto_regular"
+                                android:theme="@style/txt_EditInAppearance" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/user_role_li"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/choose_your_role_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="@string/choose_your_role"
+                                android:gravity="center"
+                                android:textColor="@color/drak_blue"
+                                android:textSize="@dimen/text_16"
+                                android:layout_marginTop="@dimen/_6sdp"
+                                android:layout_marginRight="@dimen/_15sdp"
+                                android:layout_marginLeft="@dimen/_15sdp"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_15sdp"
+                                android:layout_marginLeft="@dimen/_15sdp"
+                                android:weightSum="2">
+
+                                <RadioButton
+                                    android:id="@+id/saller_txt"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="@string/i_am_saller"
+                                    android:layout_weight="0.7"
+                                    android:singleLine="true"
+                                    android:checked="true"
+                                    android:textColor="@color/drak_blue"
+                                    android:textSize="@dimen/text_14"
+                                    android:layout_marginRight="@dimen/_15sdp"
+                                    android:layout_marginLeft="@dimen/_15sdp"/>
+
+                                <RadioButton
+                                    android:id="@+id/service_provider_txt"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="@string/i_am_service_provider"
+                                    android:layout_weight="1.3"
+                                    android:singleLine="true"
+                                    android:textColor="@color/drak_blue"
+                                    android:textSize="@dimen/text_14"
+                                    android:layout_marginRight="@dimen/_15sdp"
+                                    android:layout_marginLeft="@dimen/_15sdp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/terms_conidtion_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/lbl_terms_condition"
+                            android:gravity="center"
+                            android:textColor="@color/drak_blue"
+                            android:textSize="@dimen/text_16"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_15sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/save_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_below="@+id/cv"
+                android:layout_marginTop="@dimen/_minus20sdp"
+                android:layout_centerHorizontal="true"
+                android:backgroundTint="@color/colorAccent"
+                android:src="@drawable/ic_back_arrow"
+                android:rotation="180"
+                android:tint="@color/white"/>
+
+            <ImageView
+                android:id="@+id/save_packages_fab2"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_gravity="bottom|end"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/cv"
+                android:layout_marginTop="@dimen/_minus28sdp"
+                android:elevation="@dimen/_2sdp"
+                android:src="@drawable/circle_with_white_color" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_above="@+id/bottom_rel"
+      android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/text_you_want_to"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_24"
+                android:visibility="gone"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/app_name"
+                android:visibility="gone"
+                android:textAllCaps="true"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_24"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_20sdp"/>
+
+            <ImageView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:src="@drawable/app_logo"
+                android:layout_gravity="center_horizontal"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp">
+
+                <Button
+                    android:id="@+id/btnContinue"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/bg_btn_shape"
+                    android:fontFamily="@font/roboto_medium"
+                    android:shadowColor="@color/blue"
+                    android:layout_weight="1"
+                    android:text="@string/lbl_login"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_14"
+                    android:layout_marginRight="@dimen/_5sdp"/>
+
+                <Button
+                    android:id="@+id/btnsignup"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/bg_btn_shape"
+                    android:fontFamily="@font/roboto_medium"
+                    android:shadowColor="@color/blue"
+                    android:text="@string/lbl_signup"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_14"
+                    android:layout_marginLeft="@dimen/_5sdp" />
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/bottom_rel"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/soham_logo_rel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/powered_by"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/s_name" />
+            <TextView
+                android:id="@+id/powered_by_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/powered_by"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_12" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/soham_logo_rel">
+
+            <ImageView
+                android:id="@+id/soham_txt"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_65sdp"
+                android:src="@drawable/shoham_next_gen"/>
+
+            <TextView
+                android:id="@+id/tag_line_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:text="Where technology meets necessity"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_8" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/loading_layout"/>
+
+</RelativeLayout>

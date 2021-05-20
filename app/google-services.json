@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "853169326300",
+    "project_id": "swayam-business",
+    "storage_bucket": "swayam-business.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853169326300:android:7091873a3c6f399e4e0c19",
+        "android_client_info": {
+          "package_name": "com.sngs.swayam.business"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853169326300-ui56efltqivmj6dnn3rmd5mkps62bqmq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sngs.swayam.business",
+            "certificate_hash": "efd3421acffbc7f7db0e44e5aba9f2787461a61c"
+          }
+        },
+        {
+          "client_id": "853169326300-tn1d51mcsft1ae6l4hrd3l4ubmu1igig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA50jtk_nXjg-KIp5gRPSHg0nrJqI4Xx6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "853169326300-tn1d51mcsft1ae6l4hrd3l4ubmu1igig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

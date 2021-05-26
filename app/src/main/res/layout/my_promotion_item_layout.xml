@@ -98,9 +98,9 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:layout_below="@+id/original_price_txt"
-                    android:fontFamily="@font/roboto_regular"
+                    android:fontFamily="@font/roboto_bold"
                     android:text=""
-                    android:textColor="@color/textChild"
+                    android:textColor="@color/chocolate"
                     android:textSize="@dimen/text_12"
                     android:layout_marginTop="@dimen/_2sdp"/>
                 <TextView

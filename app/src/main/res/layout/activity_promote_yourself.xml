@@ -390,7 +390,6 @@
                             android:id="@+id/prom_desc_et"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text"
                             android:gravity="center_vertical"
                             android:textSize="@dimen/text_14"
                             android:textColor="@color/blue" />

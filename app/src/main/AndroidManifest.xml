@@ -27,7 +27,8 @@
         <activity android:name=".activity.mytractions.MyTractionsActivity" />
         <activity android:name=".activity.promotion.PromotionBannerActivity" />
         <activity android:name=".activity.promotion.PromoteYourselfActivity" />
-        <activity android:name=".activity.notifications.NotificationActivity" />
+        <activity android:name=".activity.notifications.NotificationActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".activity.profile.EditProfileActivity" />
         <activity android:name=".activity.onboarding.promos.PromotionDetailActivity" />
         <activity android:name=".activity.onboarding.promos.PromotionManagementActivity" />

@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.NonNull
 import com.google.android.material.snackbar.Snackbar
 import com.sngs.swayam.business.R
 import com.sngs.swayam.business.activity.area.State_City_List_Activity
@@ -23,9 +24,17 @@ import com.sngs.swayam.business.network.model.City.GetCityListBaseResponse
 import com.sngs.swayam.business.network.model.CustomerDetail.CustomerDetailBaseResponse
 import com.sngs.swayam.business.network.model.State.GetStateListBaseResponse
 import com.sngs.swayam.business.network.servicecall.ServiceCall
+import com.yalantis.ucrop.UCrop
 import droidninja.filepicker.FilePickerBuilder
 import droidninja.filepicker.FilePickerConst
+import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_profile_details.*
+import kotlinx.android.synthetic.main.activity_profile_details.et_Name
+import kotlinx.android.synthetic.main.activity_profile_details.et_cities
+import kotlinx.android.synthetic.main.activity_profile_details.et_email
+import kotlinx.android.synthetic.main.activity_profile_details.et_service_area
+import kotlinx.android.synthetic.main.activity_profile_details.et_state
+import kotlinx.android.synthetic.main.activity_profile_details.img2
 import kotlinx.android.synthetic.main.activity_profile_details.ivBack
 import kotlinx.android.synthetic.main.activity_profile_details.main_layout
 import kotlinx.android.synthetic.main.activity_state_city_list.*
@@ -110,7 +119,7 @@ class ProfileDetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
         profile_rel2.setOnClickListener {
-            //onPickPhoto()
+            onPickPhoto()
         }
     }
 
@@ -216,6 +225,12 @@ class ProfileDetailActivity : AppCompatActivity() {
 
             addThemToView(Links.selected_image_array_list)
         }
+        if (resultCode == UCrop.RESULT_ERROR) {
+            data?.let { handleCropError(it) };
+        }
+        else if (requestCode == UCrop.REQUEST_CROP) {
+            data?.let { handleCropResult(it) };
+        }
 
     }
 
@@ -237,7 +252,8 @@ class ProfileDetailActivity : AppCompatActivity() {
             if (profile_File != null) {
                 Log.e("", "not null")
                 val uri = Uri.fromFile(profile_File)
-                img2.setImageURI(uri)
+              //  img2.setImageURI(uri)
+                startCrop(uri);
             }
             else {
                 Log.e("selectedImagePath", "null")
@@ -438,4 +454,35 @@ class ProfileDetailActivity : AppCompatActivity() {
                     }
                 })
     }
+
+    private fun startCrop(uri: Uri) {
+        var destinationFileName: String = "Abc"
+        destinationFileName += ".png"
+        var uCrop: UCrop = UCrop.of(
+            uri,
+            Uri.fromFile(File(cacheDir, destinationFileName))
+        )
+        uCrop.start(this@ProfileDetailActivity)
+    }
+
+    private fun handleCropResult(@NonNull result: Intent) {
+        val resultUri: Uri = UCrop.getOutput(result)!!
+        if (resultUri != null) {
+            profile_File = File(resultUri.getPath())
+            img2.setImageURI(resultUri)
+        } else {
+            Toast.makeText(this@ProfileDetailActivity, R.string.toast_cannot_retrieve_cropped_image, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun handleCropError(@NonNull result: Intent) {
+        val cropError: Throwable = UCrop.getError(result)!!
+        if (cropError != null) {
+            Log.e("Naimee", "handleCropError: ", cropError)
+            Toast.makeText(this@ProfileDetailActivity, cropError.message, Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this@ProfileDetailActivity, R.string.toast_unexpected_error, Toast.LENGTH_SHORT).show()
+        }
+    }
+
 }

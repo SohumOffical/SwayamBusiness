@@ -13,6 +13,7 @@ import com.sngs.swayam.business.network.model.PromotionBanner.PromotionBannerBas
 import com.sngs.swayam.business.network.model.PromotionDetail.GetPromotionDetailBaseResponse;
 import com.sngs.swayam.business.network.model.PromotionList.GetCustomerPromotionListBaseResponse;
 import com.sngs.swayam.business.network.model.TranscationDetail.TranscationDetailBaseResponse;
+import com.sngs.swayam.business.network.model.UserDetail.UserDetailBaseResponse;
 import com.sngs.swayam.business.network.webUtlis.Links;
 import com.sngs.swayam.business.network.apiinterface.APIInterface;
 import com.sngs.swayam.business.network.model.Area.GetAreaListBaseResponse;
@@ -569,6 +570,39 @@ public class ServiceCall extends AppCompatActivity {
         return APIClient.getClient().create(APIInterface.class).postContactUS(mBodyMap);
     }
 
+    //Smart User Detail List
+    public static Call<UserDetailBaseResponse> callUserDetail(Context context, String auth_id, String auth_token, String user_type, String contact_Number) {
+
+        HashMap<String, String> mBodyMap = new HashMap<String, String>();
+        mBodyMap.put(Links.Header.Auth_ID,auth_id);
+        mBodyMap.put(Links.Header.Auth_Token,auth_token);
+        mBodyMap.put(Links.Header.User_Type,user_type);
+        mBodyMap.put(Links.SmartUserDetail.Contact_Number,contact_Number);
+
+        HashMapLog.getHashMapLog("callUserDetail", mBodyMap);
+
+        return APIClient.getClient().create(APIInterface.class).postUserDetail(mBodyMap);
+    }
+
+    public static Call<BaseResponse> callPromotionPurchaseDiscount(Context context, String auth_id, String auth_token,
+                                                                   String user_type,String user_Id,
+                                                                   String user_ContactNumber,String user_Otp,String promotion_DiscountAmount,
+                                                                   String customer_ContactNumber) {
+
+        HashMap<String, String> mBodyMap = new HashMap<String, String>();
+        mBodyMap.put(Links.Header.Auth_ID,auth_id);
+        mBodyMap.put(Links.Header.Auth_Token,auth_token);
+        mBodyMap.put(Links.Header.User_Type,user_type);
+        mBodyMap.put(Links.PromotionPurchaseDiscount.User_Id,user_Id);
+        mBodyMap.put(Links.PromotionPurchaseDiscount.User_ContactNumber,user_ContactNumber);
+        mBodyMap.put(Links.PromotionPurchaseDiscount.User_Otp,user_Otp);
+        mBodyMap.put(Links.PromotionPurchaseDiscount.Promotion_DiscountAmount,promotion_DiscountAmount);
+        mBodyMap.put(Links.PromotionPurchaseDiscount.Customer_ContactNumber,customer_ContactNumber);
+
+        HashMapLog.getHashMapLog("callPromotionPurchaseDiscount", mBodyMap);
+
+        return APIClient.getClient().create(APIInterface.class).postPromotionPurchaseDiscount(mBodyMap);
+    }
 
 }
 

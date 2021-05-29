@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/main_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.redeemcoin.RedeemCoinActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_43sdp"
+        android:elevation="@dimen/_5sdp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/ic_back_arrow"
+            app:tint="@color/textHeader" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/ivBack"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:singleLine="true"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/lbl_redeem_coin"
+            android:textColor="@color/textHeader"
+            android:textSize="@dimen/text_18" />
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/enter_mobile_number_txt2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:singleLine="true"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/lbl_enter_mobile_number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14" />
+
+            //Mobile
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_Mobile"
+                style="@style/txt_ip_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_smart_user_mobile_number"
+                android:theme="@style/txt_TextInAppearance"
+                app:errorEnabled="true"
+                android:fontFamily="@font/roboto_regular">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_Mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:paddingLeft="@dimen/_20sdp"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:drawableLeft="@drawable/ic_phone_call"
+                    android:singleLine="true"
+                    android:textColor="@color/drak_blue"
+                    android:theme="@style/txt_EditInAppearance" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnGetCoinBalance"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_btn_shape"
+                android:layout_below="@+id/tl_employe_code"
+                android:fontFamily="@font/roboto_medium"
+                android:shadowColor="@color/blue"
+                android:text="@string/lbl_get_coin_balance"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_14"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"/>
+
+
+            //coin balance
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:weightSum="2"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp">
+
+                <TextView
+                    android:id="@+id/user_name_coin_balance_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textFontWeight="1"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/lbl_user_name_coin_balance"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/user_coin_balance__value_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="0"
+                    android:gravity="end"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_18"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            //current level
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:weightSum="2"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp">
+
+                <TextView
+                    android:id="@+id/user_current_level_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/lbl_user_current_level"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/user_current_level_value_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Silver"
+                    android:gravity="end"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_18" />
+
+            </LinearLayout>
+
+            //purchase price
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:weightSum="2"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp">
+
+                <TextView
+                    android:id="@+id/minimum_purchase_price_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/lbl_minimum_purchase_price"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/minimum_purchase_price_value_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/lbl_user_coin_balance"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_18"
+                    android:layout_weight="1"
+                    android:gravity="end"/>
+
+            </LinearLayout>
+
+            //enter purchase price
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <TextView
+                    android:id="@+id/original_purchase_price_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/lbl_original_purchase_price"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14"
+                    android:layout_marginLeft="@dimen/_15sdp"/>
+
+                //Mobile
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_original_purchase_price"
+                    style="@style/txt_ip_layoutbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_purchase_price"
+                    android:theme="@style/txt_TextInAppearance"
+                    app:errorEnabled="true"
+                    android:fontFamily="@font/roboto_regular">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/original_purchase_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:inputType="number"
+                        android:paddingLeft="@dimen/_20sdp"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/drak_blue"
+                        android:theme="@style/txt_EditInAppearance" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            //max discount
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:weightSum="2"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp">
+
+                <TextView
+                    android:id="@+id/max_discount_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/lbl_max_discount"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14" />
+
+                <TextView
+                    android:id="@+id/max_discount_value_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:gravity="end"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/lbl_user_coin_balance"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_18" />
+
+            </LinearLayout>
+
+            //actual price
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:weightSum="2"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp">
+
+                <TextView
+                    android:id="@+id/actual_selling_price_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/lbl_actual_selling_price"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14" />
+
+                <TextView
+                    android:id="@+id/actual_selling_price_value_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:singleLine="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/lbl_user_coin_balance"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_18" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/otp_validation_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                //enter OTP
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_15sdp">
+
+                    <TextView
+                        android:id="@+id/otp_txt2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:singleLine="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/lbl_enter_otp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_14" />
+
+                    //Mobile
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_OTP"
+                        style="@style/txt_ip_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_otp"
+                        android:theme="@style/txt_TextInAppearance"
+                        app:errorEnabled="true"
+                        android:fontFamily="@font/roboto_regular">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_OTP"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:inputType="number"
+                            android:maxLength="6"
+                            android:text=""
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:singleLine="true"
+                            android:textColor="@color/drak_blue"
+                            android:theme="@style/txt_EditInAppearance" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/enter_mobile_number_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:singleLine="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/lbl_enter_mobile_number"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_14" />
+
+                    //Mobile
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_Mobile_Number"
+                        style="@style/txt_ip_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_enter_10_digits_mobile_number"
+                        android:theme="@style/txt_TextInAppearance"
+                        app:errorEnabled="true"
+                        android:fontFamily="@font/roboto_regular">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_Mobile_Number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:inputType="number"
+                            android:maxLength="10"
+                            android:paddingLeft="@dimen/_20sdp"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:drawableLeft="@drawable/ic_phone_call"
+                            android:singleLine="true"
+                            android:textColor="@color/drak_blue"
+                            android:theme="@style/txt_EditInAppearance" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnValidate"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_shape"
+                    android:layout_below="@+id/tl_employe_code"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:shadowColor="@color/blue"
+                    android:text="@string/lbl_validate"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_14"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_15sdp"/>
+
+                <LinearLayout
+                    android:id="@+id/choose_payment_method_li"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/choose_payment_method_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/choose_payment_method"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_16"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_marginLeft="@dimen/_15sdp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:weightSum="2">
+
+                        <RadioButton
+                            android:id="@+id/phone_pay_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/phone_pay"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:checked="true"
+                            android:textColor="@color/drak_blue"
+                            android:textSize="@dimen/text_14"
+                            android:layout_marginRight="@dimen/_15sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"/>
+
+                        <RadioButton
+                            android:id="@+id/g_pay_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/g_pay"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:textColor="@color/drak_blue"
+                            android:textSize="@dimen/text_14"
+                            android:layout_marginRight="@dimen/_15sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:weightSum="2">
+
+                        <RadioButton
+                            android:id="@+id/pay_tm_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/pay_tm_txt"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:textColor="@color/drak_blue"
+                            android:textSize="@dimen/text_14"
+                            android:layout_marginRight="@dimen/_15sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"/>
+
+                        <RadioButton
+                            android:id="@+id/amazon_pay_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/amazon_pay_txt"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:textColor="@color/drak_blue"
+                            android:textSize="@dimen/text_14"
+                            android:layout_marginRight="@dimen/_15sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"/>
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_confirm_transaction"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/bg_btn_shape"
+                        android:layout_below="@+id/tl_employe_code"
+                        android:fontFamily="@font/roboto_medium"
+                        android:shadowColor="@color/blue"
+                        android:text="@string/lbl_confirm_transaction"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_14"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginRight="@dimen/_15sdp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/loading_layout"/>
+
+</RelativeLayout>

@@ -23,6 +23,7 @@
     <string name="lbl_refer_and_earn">Refer and Earn</string>
     <string name="lbl_my_transactions">My Transactions</string>
     <string name="lbl_promo_performance">Promo Performance</string>
+    <string name="lbl_promo_history">Promo History</string>
     <string name="lbl_about_us">About Us</string>
     <string name="lbl_contact_us">Contact Us</string>
     <string name="lbl_logout">Logout</string>
@@ -308,5 +309,27 @@
     <string name="empty_query_detail">You can not send empty query message</string>
     <string name="lbl_send">Send</string>
     <string name="Select_continue">Select &amp; Continue</string>
+    <string name="lbl_redeem_coin">Redeem Coin</string>
+    <string name="lbl_user_name_coin_balance">User Name Coin Balance</string>
+    <string name="lbl_user_coin_balance">0</string>
+    <string name="lbl_user_current_level">User Current Level</string>
+    <string name="lbl_minimum_purchase_price">Minimum Purchase Price</string>
+    <string name="lbl_max_discount">Max Discount</string>
+    <string name="lbl_actual_selling_price">Actual Selling Price</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="lbl_validate">Validate</string>
+    <string name="lbl_enter_mobile_number">Enter Mobile Number</string>
+    <string name="choose_payment_method">Choose Payment Method</string>
+    <string name="phone_pay">Phone Pay</string>
+    <string name="g_pay">G Pay</string>
+    <string name="pay_tm_txt">Paytm</string>
+    <string name="amazon_pay_txt">Amazon Pay</string>
+    <string name="lbl_confirm_transaction">Confirm Transaction</string>
+    <string name="lbl_original_purchase_price">Original Purchase Price</string>
+    <string name="enter_purchase_price">Enter Purchase Price</string>
+    <string name="enter_smart_user_mobile_number">Enter Smart User Mobile Number</string>
+    <string name="lbl_get_coin_balance">Get Coin Balance</string>
+    <string name="lbl_enter_otp">Enter OTP</string>
+    <string name="lbl_enter_discount_price">Please enter discount price</string>
 
 </resources>

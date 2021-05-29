@@ -7,6 +7,7 @@ import com.sngs.swayam.business.network.model.PromotionBanner.PromotionBannerBas
 import com.sngs.swayam.business.network.model.PromotionDetail.GetPromotionDetailBaseResponse;
 import com.sngs.swayam.business.network.model.PromotionList.GetCustomerPromotionListBaseResponse;
 import com.sngs.swayam.business.network.model.TranscationDetail.TranscationDetailBaseResponse;
+import com.sngs.swayam.business.network.model.UserDetail.UserDetailBaseResponse;
 import com.sngs.swayam.business.network.webUtlis.Links;
 import com.sngs.swayam.business.network.model.Area.GetAreaListBaseResponse;
 import com.sngs.swayam.business.network.model.Attribute.GetAttributeListBaseResponse;
@@ -222,6 +223,16 @@ public interface APIInterface
     @POST(Links.Contact_US)
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     Call<BaseResponse> postContactUS(@Body HashMap<String, String> mBodyMap);
+
+    //User Detail
+    @POST(Links.Get_User_Detail)
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    Call<UserDetailBaseResponse> postUserDetail(@Body HashMap<String, String> mBodyMap);
+
+    //Promotaion Purchase
+    @POST(Links.Promotion_Purchase_Discount)
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    Call<BaseResponse> postPromotionPurchaseDiscount(@Body HashMap<String, String> mBodyMap);
 
 
 }

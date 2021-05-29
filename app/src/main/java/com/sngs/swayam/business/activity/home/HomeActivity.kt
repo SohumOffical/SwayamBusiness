@@ -27,6 +27,7 @@ import com.sngs.swayam.business.activity.onboarding.promos.PromotionManagementAc
 import com.sngs.swayam.business.activity.packages.ListPackagesActivity
 import com.sngs.swayam.business.activity.profile.EditProfileActivity
 import com.sngs.swayam.business.activity.promotion.PromoteYourselfActivity
+import com.sngs.swayam.business.activity.redeemcoin.RedeemCoinActivity
 import com.sngs.swayam.business.network.webUtlis.Links
 import com.sngs.swayam.business.network.model.CustomerDetail.CustomerDetailBaseResponse
 import com.sngs.swayam.business.network.model.ServiceProvider.GetServiceProviderBaseResponse
@@ -116,6 +117,12 @@ class HomeActivity : AppCompatActivity() {
         my_transactions_txt1.setOnClickListener {
             drawerlayout.closeDrawer(GravityCompat.START)
             val intent = Intent(this, MyTractionsActivity::class.java)
+            startActivity(intent)
+        }
+
+        redeem_coin_li1.setOnClickListener {
+            drawerlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, RedeemCoinActivity::class.java)
             startActivity(intent)
         }
 

@@ -118,6 +118,7 @@ class OfferDetailActivity : AppCompatActivity()
         }
 
 
+
         if(!Links.PromotionList_Result.get(selected_pos).subCategoryName.isEmpty()){
             sub_category_detail_txt.setText(""+ Links.PromotionList_Result.get(selected_pos).subCategoryName)
         }

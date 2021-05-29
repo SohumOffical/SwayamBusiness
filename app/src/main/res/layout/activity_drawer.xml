@@ -164,7 +164,22 @@
 
                     <TextView
                         android:id="@+id/my_transactions_txt1"
-                        android:text="@string/lbl_my_transactions"
+                        android:text="@string/lbl_promo_history"
+                        android:drawableLeft="@drawable/ic_wallet"
+                        style="@style/MenuOption" />
+
+                </LinearLayout>
+
+                //Redeem Coin
+                <LinearLayout
+                    android:id="@+id/redeem_coin_li1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/redeem_coin_txt1"
+                        android:text="@string/lbl_redeem_coin"
                         android:drawableLeft="@drawable/ic_wallet"
                         style="@style/MenuOption" />
 

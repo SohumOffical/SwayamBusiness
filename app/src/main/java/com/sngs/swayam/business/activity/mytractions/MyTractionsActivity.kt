@@ -34,8 +34,6 @@ class MyTractionsActivity : AppCompatActivity()
         click_fun()
     }
 
-
-
     private fun init() {
         val rv_list = findViewById(R.id.rv_list) as RecyclerView
         rv_list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)

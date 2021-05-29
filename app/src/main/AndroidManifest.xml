@@ -17,18 +17,19 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name=".activity.onboarding.promos.PromotionDraftActivity"/>
+        <activity android:name=".activity.redeemcoin.RedeemCoinActivity"></activity>
+        <activity android:name=".activity.onboarding.promos.PromotionDraftActivity" />
         <activity android:name=".activity.home.AboutUsActivity" />
         <activity android:name=".activity.home.ContactusActivity" />
         <activity android:name=".activity.packages.ListPackagesActivity" />
         <activity android:name=".activity.mytractions.MyTractionsActivity" />
         <activity android:name=".activity.promotion.PromotionBannerActivity" />
         <activity android:name=".activity.promotion.PromoteYourselfActivity" />
-        <activity android:name=".activity.notifications.NotificationActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".activity.notifications.NotificationActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activity.profile.EditProfileActivity" />
         <activity android:name=".activity.onboarding.promos.PromotionDetailActivity" />
         <activity android:name=".activity.onboarding.promos.PromotionManagementActivity" />
@@ -68,7 +69,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
 
         <service
@@ -114,17 +115,14 @@
 
         <activity
             android:name=".activity.crop.BaseActivity"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.crop.ResultActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
     </application>
 
 </manifest>

@@ -3,12 +3,14 @@ package com.sngs.swayam.business.activity.redeemcoin
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.sngs.swayam.business.R
 import com.sngs.swayam.business.network.model.BaseResponse
+import com.sngs.swayam.business.network.model.RedeemCoinBaseResponse
 import com.sngs.swayam.business.network.model.UserDetail.UserDetailBaseResponse
 import com.sngs.swayam.business.network.model.UserDetail.UserResult
 import com.sngs.swayam.business.network.servicecall.ServiceCall
@@ -27,6 +29,10 @@ class RedeemCoinActivity : AppCompatActivity() {
     var otp : String = ""
     var user_id  : String = ""
 
+    var trans_id : String = "2"
+    var payment_method : String = "Phone Pay"
+    var click : String = "0"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -41,10 +47,14 @@ class RedeemCoinActivity : AppCompatActivity() {
     }
 
     private fun init() {
-
+        click = "0"
+        set_radio_btn()
     }
 
     private fun click_fun() {
+        redeem_ivBack.setOnClickListener {
+            finish()
+        }
         btnGetCoinBalance.setOnClickListener {
             validation()
         }
@@ -70,6 +80,66 @@ class RedeemCoinActivity : AppCompatActivity() {
             validation_otp()
         }
 
+        phone_pay_txt.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                click = "0"
+                set_radio_btn()
+            }
+        }
+        g_pay_txt.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                click = "1"
+                set_radio_btn()
+            }
+        }
+        pay_tm_txt.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                click = "2"
+                set_radio_btn()
+            }
+        }
+        amazon_pay_txt.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                click = "3"
+                set_radio_btn()
+            }
+        }
+
+        btn_confirm_transaction.setOnClickListener {
+            if(trans_id.isEmpty()){
+                Links.snack_bar(this@RedeemCoinActivity,main_layout,resources.getString(R.string.lbl_trans_id))
+            }
+            else  if(payment_method.isEmpty()){
+                Links.snack_bar(this@RedeemCoinActivity,main_layout,resources.getString(R.string.lbl_payment_method))
+            }
+            else{
+                api_calling_for_confrim_payment()
+            }
+        }
+    }
+
+    private fun set_radio_btn() {
+        phone_pay_txt.isChecked = false
+        g_pay_txt.isChecked = false
+        pay_tm_txt.isChecked = false
+        amazon_pay_txt.isChecked = false
+
+        if(click.equals("0")){
+            phone_pay_txt.isChecked = true
+            payment_method  = "Phone Pay"
+        }
+        else   if(click.equals("1")){
+            g_pay_txt.isChecked = true
+            payment_method  = "G Pay"
+        }
+        else   if(click.equals("2")){
+            pay_tm_txt.isChecked = true
+            payment_method  = "Paytm"
+        }
+        else   if(click.equals("3")){
+            amazon_pay_txt.isChecked = true
+            payment_method  = "Amazon Pay"
+        }
     }
 
     private fun validation_otp() {
@@ -106,7 +176,6 @@ class RedeemCoinActivity : AppCompatActivity() {
             api_calling_for_purchase_promotion_discount()
         }
     }
-
 
     private fun validation() {
         if(et_Mobile.text.toString().isEmpty()){
@@ -255,7 +324,6 @@ class RedeemCoinActivity : AppCompatActivity() {
         }*/
     }
 
-
     private fun calculate_purchase_price() {
         if(user_coin_balance__value_txt.text.toString().isEmpty()){ }
         else  if(original_purchase_price.text.toString().isEmpty()){ }
@@ -294,8 +362,43 @@ class RedeemCoinActivity : AppCompatActivity() {
 
         loading_layout.setVisibility(View.VISIBLE)
 
+
         ServiceCall.callPromotionPurchaseDiscount(this, auth_id, auth_token, Links.User_Type, user_id,
-            et_Mobile.text.toString(),et_OTP.text.toString(),max_discount_value_txt.text.toString(),et_Mobile_Number.text.toString())
+            et_Mobile.text.toString(),et_OTP.text.toString(),max_discount_value_txt.text.toString(),
+                et_Mobile_Number.text.toString())
+            .enqueue(object : Callback<RedeemCoinBaseResponse> {
+                override fun onResponse(call: Call<RedeemCoinBaseResponse>, response: Response<RedeemCoinBaseResponse>) {
+                    loading_layout.setVisibility(View.GONE)
+                    if (response.isSuccessful()) {
+                        val success_v = response.body()?.success
+                        if (success_v?.toInt()==1) {
+                            trans_id = response.body()!!.getmPromotionPurchaseDiscountId().toString()
+                            Links.snack_bar(this@RedeemCoinActivity,main_layout,response.body()?.message.toString())
+                        }
+                        else {
+                            Links.snack_bar(this@RedeemCoinActivity,main_layout,response.body()?.message.toString())
+                        }
+                    } else {
+                        Links.snack_bar(this@RedeemCoinActivity,main_layout,response.body()?.message.toString())
+                    }
+                }
+                override fun onFailure(call: Call<RedeemCoinBaseResponse>, t: Throwable) {
+                    loading_layout.setVisibility(View.GONE)
+                    Links.snack_bar(this@RedeemCoinActivity,main_layout,t.message.toString())
+                }
+            })
+    }
+
+    private fun api_calling_for_confrim_payment() {
+
+        val sharedPreferences: SharedPreferences = getSharedPreferences("Swayam App", Context.MODE_PRIVATE)
+        val auth_id = sharedPreferences.getString("Auth_ID","")
+        val auth_token = sharedPreferences.getString("Auth_Token","")
+
+        loading_layout.setVisibility(View.VISIBLE)
+
+        ServiceCall.callPromotionConfirmTranscation(this, auth_id, auth_token, Links.User_Type,
+            trans_id,payment_method)
             .enqueue(object : Callback<BaseResponse> {
                 override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                     loading_layout.setVisibility(View.GONE)
@@ -303,6 +406,9 @@ class RedeemCoinActivity : AppCompatActivity() {
                         val success_v = response.body()?.success
                         if (success_v?.toInt()==1) {
                             Links.snack_bar(this@RedeemCoinActivity,main_layout,response.body()?.message.toString())
+                            withDelay(1500){
+                                finish()
+                            }
                         }
                         else {
                             Links.snack_bar(this@RedeemCoinActivity,main_layout,response.body()?.message.toString())
@@ -316,5 +422,9 @@ class RedeemCoinActivity : AppCompatActivity() {
                     Links.snack_bar(this@RedeemCoinActivity,main_layout,t.message.toString())
                 }
             })
+    }
+
+    fun withDelay(delay: Long = 1000, block: () -> Unit) {
+        Handler().postDelayed(Runnable(block), delay)
     }
 }

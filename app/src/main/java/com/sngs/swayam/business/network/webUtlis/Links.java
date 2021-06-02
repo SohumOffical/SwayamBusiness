@@ -84,6 +84,7 @@ public class Links {
 
     //Promotaion Purchase
     public  static  final String Promotion_Purchase_Discount = "promotionPurchaseDiscount.php";
+    public  static  final String CustomerPaymentMethod = "promotionPurchaseDiscountPaymentMethod.php";
 
     public static List<String> services_provider = new ArrayList<>();
     public static List<State_Model> select_state = new ArrayList<>();
@@ -303,6 +304,8 @@ public class Links {
         public static final String User_Otp = "userOtp";
         public static final String Promotion_DiscountAmount = "promotionDiscountAmount";
         public static final String Customer_ContactNumber = "customerContactNumber";
+        public static final String Purchase_DiscountId = "promotionPurchaseDiscountId";
+        public static final String Payment_Method = "paymentMethod";
     }
 
     public static void snack_bar(Context context, RelativeLayout main_layout, String mes){

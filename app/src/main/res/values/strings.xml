@@ -331,5 +331,7 @@
     <string name="lbl_get_coin_balance">Get Coin Balance</string>
     <string name="lbl_enter_otp">Enter OTP</string>
     <string name="lbl_enter_discount_price">Please enter discount price</string>
+    <string name="lbl_trans_id">Your Transaction-ID not found</string>
+    <string name="lbl_payment_method">Please select your payment method</string>
 
 </resources>

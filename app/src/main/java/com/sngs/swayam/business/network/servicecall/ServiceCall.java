@@ -12,6 +12,7 @@ import com.sngs.swayam.business.network.model.PromoDetail.PromoDetailBaseRespons
 import com.sngs.swayam.business.network.model.PromotionBanner.PromotionBannerBaseResponse;
 import com.sngs.swayam.business.network.model.PromotionDetail.GetPromotionDetailBaseResponse;
 import com.sngs.swayam.business.network.model.PromotionList.GetCustomerPromotionListBaseResponse;
+import com.sngs.swayam.business.network.model.RedeemCoinBaseResponse;
 import com.sngs.swayam.business.network.model.TranscationDetail.TranscationDetailBaseResponse;
 import com.sngs.swayam.business.network.model.UserDetail.UserDetailBaseResponse;
 import com.sngs.swayam.business.network.webUtlis.Links;
@@ -584,10 +585,10 @@ public class ServiceCall extends AppCompatActivity {
         return APIClient.getClient().create(APIInterface.class).postUserDetail(mBodyMap);
     }
 
-    public static Call<BaseResponse> callPromotionPurchaseDiscount(Context context, String auth_id, String auth_token,
-                                                                   String user_type,String user_Id,
-                                                                   String user_ContactNumber,String user_Otp,String promotion_DiscountAmount,
-                                                                   String customer_ContactNumber) {
+    public static Call<RedeemCoinBaseResponse> callPromotionPurchaseDiscount(Context context, String auth_id, String auth_token,
+                                                                             String user_type, String user_Id,
+                                                                             String user_ContactNumber, String user_Otp, String promotion_DiscountAmount,
+                                                                             String customer_ContactNumber) {
 
         HashMap<String, String> mBodyMap = new HashMap<String, String>();
         mBodyMap.put(Links.Header.Auth_ID,auth_id);
@@ -602,6 +603,23 @@ public class ServiceCall extends AppCompatActivity {
         HashMapLog.getHashMapLog("callPromotionPurchaseDiscount", mBodyMap);
 
         return APIClient.getClient().create(APIInterface.class).postPromotionPurchaseDiscount(mBodyMap);
+    }
+
+
+    public static Call<BaseResponse> callPromotionConfirmTranscation(Context context, String auth_id, String auth_token,
+                                                                   String user_type,String DiscountId,
+                                                                   String paymentMethod) {
+
+        HashMap<String, String> mBodyMap = new HashMap<String, String>();
+        mBodyMap.put(Links.Header.Auth_ID,auth_id);
+        mBodyMap.put(Links.Header.Auth_Token,auth_token);
+        mBodyMap.put(Links.Header.User_Type,user_type);
+        mBodyMap.put(Links.PromotionPurchaseDiscount.Purchase_DiscountId,DiscountId);
+        mBodyMap.put(Links.PromotionPurchaseDiscount.Payment_Method,paymentMethod);
+
+        HashMapLog.getHashMapLog("callPromotionConfirmTranscation", mBodyMap);
+
+        return APIClient.getClient().create(APIInterface.class).postCustomerPaymentMethod(mBodyMap);
     }
 
 }

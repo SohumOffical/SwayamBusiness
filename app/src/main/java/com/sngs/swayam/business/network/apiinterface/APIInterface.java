@@ -1,5 +1,6 @@
 package com.sngs.swayam.business.network.apiinterface;
 
+import com.sngs.swayam.business.network.model.CustomerPackages.CustomerPCKBaseReponse;
 import com.sngs.swayam.business.network.model.Notification.NotificationBaseResponse;
 import com.sngs.swayam.business.network.model.Packages.GetPackageListBaseResponse;
 import com.sngs.swayam.business.network.model.PromoDetail.PromoDetailBaseResponse;
@@ -182,6 +183,10 @@ public interface APIInterface
     @POST(Links.getCustomer_Transaction_DetailList)
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     Call<TranscationDetailBaseResponse> postgetCustomer_Transaction_DetailList(@Body HashMap<String, String> mBodyMap);
+
+    @POST(Links.getCustomer_Package_DetailList)
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    Call<CustomerPCKBaseReponse> postgetCustomer_Package_DetailList(@Body HashMap<String, String> mBodyMap);
 
 
     //Edit

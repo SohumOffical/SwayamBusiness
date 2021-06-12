@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sngs.swayam.business.R
 import com.sngs.swayam.business.adapters.mytractions.MyTractionsAdpater
+import com.sngs.swayam.business.network.model.CustomerPackages.CustomerPCKBaseReponse
 import com.sngs.swayam.business.network.model.TranscationDetail.TranscationDetailBaseResponse
 import com.sngs.swayam.business.network.servicecall.ServiceCall
 import com.sngs.swayam.business.network.webUtlis.Links
@@ -54,20 +55,20 @@ class MyTractionsActivity : AppCompatActivity()
         val auth_token = sharedPreferences.getString("Auth_Token","")
 
         loading_layout.setVisibility(View.VISIBLE)
-        ServiceCall.callCustomerTransactionDetailList(this, auth_id,auth_token,Links.User_Type)
-            .enqueue(object : Callback<TranscationDetailBaseResponse> {
-                override fun onResponse(call: Call<TranscationDetailBaseResponse>,
-                                        response: Response<TranscationDetailBaseResponse>) {
+        ServiceCall.callCustomerPCKDetailList(this, auth_id,auth_token,Links.User_Type)
+            .enqueue(object : Callback<CustomerPCKBaseReponse> {
+                override fun onResponse(call: Call<CustomerPCKBaseReponse>,
+                                        response: Response<CustomerPCKBaseReponse>) {
                     loading_layout.setVisibility(View.GONE)
                     if (response.isSuccessful()) {
                         val success_v = response.body()?.success
-                        Links.Transcation_Result.clear()
+                        Links.Package_list.clear()
                         if (success_v?.toInt()==1) {
                             loading_layout.setVisibility(View.GONE)
-                            if(response.body()!!.transactionListResult!=null)
+                            if(response.body()!!.packageList!=null)
                             {
-                                Links.Transcation_Result = response.body()!!.transactionListResult
-                                rv_list.adapter = MyTractionsAdpater(this@MyTractionsActivity, Links.Transcation_Result)
+                                Links.Package_list = response.body()!!.packageList
+                                rv_list.adapter = MyTractionsAdpater(this@MyTractionsActivity, Links.Package_list)
                                 Links.snack_bar(this@MyTractionsActivity,main_layout,response.body()?.message.toString())
                             }
                         }
@@ -80,7 +81,7 @@ class MyTractionsActivity : AppCompatActivity()
                         Links.snack_bar(this@MyTractionsActivity,main_layout,response.body()?.message.toString())
                     }
                 }
-                override fun onFailure(call: Call<TranscationDetailBaseResponse>, t: Throwable) {
+                override fun onFailure(call: Call<CustomerPCKBaseReponse>, t: Throwable) {
                     loading_layout.setVisibility(View.GONE)
                     Links.snack_bar(this@MyTractionsActivity,main_layout, t.message.toString())
                 }

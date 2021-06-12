@@ -11,8 +11,9 @@
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_43sdp"
-        android:elevation="@dimen/_5sdp">
+        android:layout_height="@dimen/_35sdp"
+        android:elevation="@dimen/_5sdp"
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/ivBack"

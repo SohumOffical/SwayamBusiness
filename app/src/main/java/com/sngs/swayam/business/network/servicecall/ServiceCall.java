@@ -6,6 +6,7 @@ import android.net.Uri;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sngs.swayam.business.network.HashMapLog;
+import com.sngs.swayam.business.network.model.CustomerPackages.CustomerPCKBaseReponse;
 import com.sngs.swayam.business.network.model.Notification.NotificationBaseResponse;
 import com.sngs.swayam.business.network.model.Packages.GetPackageListBaseResponse;
 import com.sngs.swayam.business.network.model.PromoDetail.PromoDetailBaseResponse;
@@ -155,12 +156,14 @@ public class ServiceCall extends AppCompatActivity {
     }
 
     //Service Provider List
-    public static Call<GetServiceProviderBaseResponse> callGetServiceProviderList(Context context, String auth_id, String auth_token, String user_type) {
+    public static Call<GetServiceProviderBaseResponse> callGetServiceProviderList(Context context, String auth_id,
+                                                                                  String auth_token, String user_type,String filter_Type) {
 
         HashMap<String, String> mBodyMap = new HashMap<String, String>();
         mBodyMap.put(Links.Header.Auth_ID,auth_id);
         mBodyMap.put(Links.Header.Auth_Token,auth_token);
         mBodyMap.put(Links.Header.User_Type,user_type);
+        mBodyMap.put(Links.Service_Detail.Filter_Type,filter_Type);
 
         HashMapLog.getHashMapLog("callGetServiceProviderList", mBodyMap);
 
@@ -169,13 +172,14 @@ public class ServiceCall extends AppCompatActivity {
 
     //Get Category List
     public static Call<GetCategoryListBaseResponse> callGetCategoryList(Context context, String auth_id, String auth_token, String user_type,
-                                                                        String service_id) {
+                                                                        String service_id,String filter_Type) {
 
         HashMap<String, String> mBodyMap = new HashMap<String, String>();
         mBodyMap.put(Links.Header.Auth_ID,auth_id);
         mBodyMap.put(Links.Header.Auth_Token,auth_token);
         mBodyMap.put(Links.Header.User_Type,user_type);
         mBodyMap.put(Links.GetCategoryListDetail.Service_Id,service_id);
+        mBodyMap.put(Links.GetSubCategoryListDetail.Filter_Type,filter_Type);
 
         HashMapLog.getHashMapLog("callGetCategoryList", mBodyMap);
 
@@ -192,6 +196,7 @@ public class ServiceCall extends AppCompatActivity {
         mBodyMap.put(Links.Header.User_Type,user_type);
         mBodyMap.put(Links.GetSubCategoryListDetail.Service_Id,service_id);
         mBodyMap.put(Links.GetSubCategoryListDetail.Category_Id,category_id);
+
 
         HashMapLog.getHashMapLog("callGetSubCategoryList", mBodyMap);
 
@@ -445,6 +450,21 @@ public class ServiceCall extends AppCompatActivity {
         HashMapLog.getHashMapLog("calGetCustomerPromotionList", mBodyMap);
 
         return APIClient.getClient().create(APIInterface.class).postgetCustomer_Transaction_DetailList(mBodyMap);
+    }
+
+
+    public static Call<CustomerPCKBaseReponse> callCustomerPCKDetailList(
+            Context context, String auth_id,
+            String auth_token, String user_type) {
+
+        HashMap<String, String> mBodyMap = new HashMap<String, String>();
+        mBodyMap.put(Links.Header.Auth_ID,auth_id);
+        mBodyMap.put(Links.Header.Auth_Token,auth_token);
+        mBodyMap.put(Links.Header.User_Type,user_type);
+
+        HashMapLog.getHashMapLog("callCustomerPCKDetailList", mBodyMap);
+
+        return APIClient.getClient().create(APIInterface.class).postgetCustomer_Package_DetailList(mBodyMap);
     }
 
 

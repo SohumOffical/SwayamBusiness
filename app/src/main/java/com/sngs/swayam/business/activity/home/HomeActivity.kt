@@ -222,9 +222,6 @@ class HomeActivity : AppCompatActivity() {
 
         },800)
 
-
-
-
         api_calling_for_customer_detail()
         api_calling_for_service_provide_detail()
     }
@@ -463,7 +460,7 @@ class HomeActivity : AppCompatActivity() {
         val auth_id = sharedPreferences.getString("Auth_ID","")
         val auth_token = sharedPreferences.getString("Auth_Token","")
 
-        ServiceCall.callGetServiceProviderList(this, auth_id, auth_token, Links.User_Type)
+        ServiceCall.callGetServiceProviderList(this, auth_id, auth_token, Links.User_Type,"1")
             .enqueue(object : Callback<GetServiceProviderBaseResponse> {
                 override fun onResponse(call: Call<GetServiceProviderBaseResponse>, response: Response<GetServiceProviderBaseResponse>) {
                     loading_layout.setVisibility(View.GONE)

@@ -18,6 +18,7 @@ public class Notification {
     @SerializedName("notiEventId")
     private String mNotiEventId;
 
+
     public String getNotiId() {
         return mNotiId;
     }

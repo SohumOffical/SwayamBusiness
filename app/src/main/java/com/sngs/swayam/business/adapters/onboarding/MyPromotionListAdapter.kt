@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.sngs.swayam.business.R
 import com.sngs.swayam.business.activity.onboarding.promos.OfferDetailActivity
 import com.sngs.swayam.business.network.model.PromoDetail.PromotionListResult
+import kotlinx.android.synthetic.main.activity_offer_detail.*
 import kotlinx.android.synthetic.main.my_promotion_item_layout.view.*
 
 
@@ -53,7 +55,15 @@ class MyPromotionListAdapter  (private var arrayList: List<PromotionListResult>,
         holder.itemView.offer_price_txt.setText(word)
         val wordTwo: Spannable = SpannableString(" "+arrayList.get(position).promotionAdditionalOffer)
         wordTwo.setSpan(ForegroundColorSpan(context.resources.getColor(R.color.colorPrimary)), 0, wordTwo.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)*/
-        holder.itemView.offer_price_txt.append("Offer :"+arrayList.get(position).promotionAdditionalOffer)
+
+        val s: String = arrayList.get(position).promotionAdditionalOffer.toString()
+        val perposition = s.indexOf("%")
+        if(perposition>0){
+            holder.itemView.offer_price_txt.setText("Offer : "+arrayList.get(position).promotionAdditionalOffer)
+        }else{
+            Log.e("position"," "+position+ " "+arrayList.get(position).promotionAdditionalOffer)
+            holder.itemView.offer_price_txt.setText("Offer : ₹"+arrayList.get(position).promotionAdditionalOffer)
+        }
 
 
        /* val word2: Spannable = SpannableString("Final Price:")

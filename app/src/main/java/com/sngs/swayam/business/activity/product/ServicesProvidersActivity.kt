@@ -59,7 +59,7 @@ class ServicesProvidersActivity : AppCompatActivity() {
 
         loading_layout.setVisibility(View.VISIBLE)
 
-        ServiceCall.callGetServiceProviderList(this, auth_id, auth_token, Links.User_Type)
+        ServiceCall.callGetServiceProviderList(this, auth_id, auth_token, Links.User_Type,"0")
             .enqueue(object : Callback<GetServiceProviderBaseResponse> {
                 override fun onResponse(call: Call<GetServiceProviderBaseResponse>, response: Response<GetServiceProviderBaseResponse>) {
                     loading_layout.setVisibility(View.GONE)

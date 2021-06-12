@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.sngs.swayam.business.R;
+import com.sngs.swayam.business.network.model.CustomerPackages.PackageList;
 import com.sngs.swayam.business.network.model.PromotionList.PromotionListResult;
 import com.sngs.swayam.business.network.model.TranscationDetail.TransactionListResult;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class MyTractionsAdpater extends RecyclerView.Adapter<MyTractionsAdpater.MyViewHolder> {
 
-    List<TransactionListResult> arrayList;
+    List<PackageList> arrayList;
     Context context;
 
 
@@ -36,7 +37,7 @@ public class MyTractionsAdpater extends RecyclerView.Adapter<MyTractionsAdpater.
     }
 
 
-    public MyTractionsAdpater(Context context_app, List<TransactionListResult> arrayList) {
+    public MyTractionsAdpater(Context context_app, List<PackageList> arrayList) {
         this.context = context_app;
         this.arrayList = arrayList;
     }
@@ -53,9 +54,9 @@ public class MyTractionsAdpater extends RecyclerView.Adapter<MyTractionsAdpater.
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         holder.no_of_ads.setText(""+(position+1));
-        holder.date_promoted.setText(""+arrayList.get(position).getTransactionDate());
-        holder.package_choose.setText(""+arrayList.get(position).getPromotionPrice());
-        holder.sent_to.setText(""+arrayList.get(position).getPromotionVisibility());
+        holder.date_promoted.setText(""+arrayList.get(position).getPackagePurchasedDate());
+        holder.package_choose.setText(""+arrayList.get(position).getPackageName());
+        holder.sent_to.setText(""+arrayList.get(position).getNumberOfCustomer());
         holder.amount.setText("View");
 
     }

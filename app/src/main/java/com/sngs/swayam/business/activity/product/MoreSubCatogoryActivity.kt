@@ -32,6 +32,8 @@ class MoreSubCatogoryActivity : AppCompatActivity() {
     var  txt3 : Boolean= false
     var  txt4 : Boolean= false
 
+    var service_name : String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -47,6 +49,9 @@ class MoreSubCatogoryActivity : AppCompatActivity() {
     }
 
     private fun init() {
+        service_name = intent.getStringExtra("service_name").toString()
+        tvTitle.setText(""+service_name)
+
         click = 1
 
         val more_sub_catergory_rv = findViewById(R.id.more_sub_catergory_rv) as RecyclerView
@@ -150,7 +155,8 @@ class MoreSubCatogoryActivity : AppCompatActivity() {
 
         loading_layout.setVisibility(View.VISIBLE)
 
-        ServiceCall.callGetCategoryList(this, auth_id, auth_token, Links.User_Type, Links.selected_service_id)
+        ServiceCall.callGetCategoryList(this, auth_id, auth_token, Links.User_Type, Links.selected_service_id,
+                "0")
             .enqueue(object : Callback<GetCategoryListBaseResponse> {
                 override fun onResponse(call: Call<GetCategoryListBaseResponse>, response: Response<GetCategoryListBaseResponse>) {
                     loading_layout.setVisibility(View.GONE)

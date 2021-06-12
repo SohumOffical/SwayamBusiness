@@ -50,7 +50,7 @@
     <string name="name_error">Please enter name</string>
     <string name="mobile_error">Please enter Mobile number</string>
     <string name="mobile_lenght_error">Mobile Number length sholud be 10 digits</string>
-    <string name="email_validation">Please enter validate mail address</string>
+    <string name="email_validation">Please enter valid email id/address</string>
     <string name="address_line_1_error">Please enter address line1</string>
     <string name="address_line_2_error">Please enter address line2</string>
     <string name="state_error">Please enter state</string>
@@ -333,5 +333,9 @@
     <string name="lbl_enter_discount_price">Please enter discount price</string>
     <string name="lbl_trans_id">Your Transaction-ID not found</string>
     <string name="lbl_payment_method">Please select your payment method</string>
+    <string name="mobile_data_usage">Mobile Data Usage</string>
+    <string name="app_wisa_data_usage">App Wisa Data Usage</string>
+    <string name="fitness_tracker">Fitness Tracker</string>
+    <string name="digital_well_being">Digital Well Being</string>
 
 </resources>

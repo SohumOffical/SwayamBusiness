@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
 import com.sngs.swayam.business.R
@@ -98,7 +99,7 @@ class OfferDetailActivity : AppCompatActivity()
         prom_title_txt.setText(""+Links.PromotionList_Result.get(selected_pos).promotionTitle)
 
         original_price_detail_txt.setText(""+Links.PromotionList_Result.get(selected_pos).promotionPrice)
-        offer_price_detail_txt.setText("₹"+Links.PromotionList_Result.get(selected_pos).promotionAdditionalOffer)
+    //    offer_price_detail_txt.setText("₹"+Links.PromotionList_Result.get(selected_pos).promotionAdditionalOffer)
         additional_offer_detail_txt.setText(""+Links.PromotionList_Result.get(selected_pos).getmPromotionFinalRate())
 
         category_detail_txt.setText(""+Links.PromotionList_Result.get(selected_pos).categoryName)
@@ -117,6 +118,14 @@ class OfferDetailActivity : AppCompatActivity()
             coupon_offer_txt.setText("Swayam Smart user will get max additional discount : ₹ "+Links.PromotionList_Result.get(selected_pos).getmPromotionCouponOfferPrice())
         }
 
+        val s: String = Links.PromotionList_Result.get(selected_pos).promotionAdditionalOffer.toString()
+        val position = s.indexOf("%")
+        Log.e("position"," "+position)
+        if(position>0){
+            offer_price_detail_txt.setText(""+Links.PromotionList_Result.get(selected_pos).promotionAdditionalOffer)
+        }else{
+            offer_price_detail_txt.setText("₹"+Links.PromotionList_Result.get(selected_pos).promotionAdditionalOffer)
+        }
 
 
         if(!Links.PromotionList_Result.get(selected_pos).subCategoryName.isEmpty()){

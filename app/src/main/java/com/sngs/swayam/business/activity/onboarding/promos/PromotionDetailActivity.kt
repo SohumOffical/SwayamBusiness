@@ -16,14 +16,20 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.sngs.swayam.business.R
 import com.sngs.swayam.business.activity.home.HomeActivity
+import com.sngs.swayam.business.network.model.BaseResponse
 import com.sngs.swayam.business.network.webUtlis.Links
 import com.sngs.swayam.business.network.model.CustomerDetail.CustomerDetailBaseResponse
 import com.sngs.swayam.business.network.servicecall.ServiceCall
 import kotlinx.android.synthetic.main.activity_promotion_detail.*
+import kotlinx.android.synthetic.main.activity_promotion_detail.ivBack
+import kotlinx.android.synthetic.main.activity_promotion_detail.main_layout
+import kotlinx.android.synthetic.main.activity_promotion_detail.tvTitle
+import kotlinx.android.synthetic.main.activity_upload_file.*
 import kotlinx.android.synthetic.main.loading_layout.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class PromotionDetailActivity : AppCompatActivity() {
 
@@ -34,6 +40,12 @@ class PromotionDetailActivity : AppCompatActivity() {
             R.drawable.shop_img,
             R.drawable.shop_img2
         )
+
+    var image_File : File? = null
+    var image_File2 : File? = null
+    var image_File3 : File? = null
+    var image_File4 : File? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,10 +105,7 @@ class PromotionDetailActivity : AppCompatActivity() {
         }
 
         btnCreatePortfolio.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
+            api_calling_for_upload_file()
         }
     }
 
@@ -202,5 +211,58 @@ class PromotionDetailActivity : AppCompatActivity() {
         dots.setViewPager(viewpager)
 
         auto_swipe_banner();*/
+    }
+
+    private fun api_calling_for_upload_file()
+    {
+        val sharedPreferences: SharedPreferences = getSharedPreferences("Swayam App", Context.MODE_PRIVATE)
+        val auth_id = sharedPreferences.getString("Auth_ID","")
+        val auth_token = sharedPreferences.getString("Auth_Token","")
+
+        loading_layout.setVisibility(View.VISIBLE)
+
+        Links.selected_category_id = ""
+        for (i in 0..(Links.selected_category_ids_list.size - 1)) {
+            if(Links.selected_category_id.isEmpty()) {
+                Links.selected_category_id = Links.selected_category_ids_list.get(i)
+            }
+            else{
+                Links.selected_category_id = Links.selected_category_id+","+Links.selected_category_ids_list.get(i)
+            }
+        }
+
+        ServiceCall.callUploadFileDetail(this, auth_id, auth_token, Links.User_Type,
+                Links.selected_service_id, Links.selected_category_id,"","",image_File,image_File2,image_File3,image_File4)
+                .enqueue(object : Callback<BaseResponse> {
+                    override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                        loading_layout.setVisibility(View.GONE)
+                        if (response.isSuccessful()) {
+                            val success_v = response.body()?.success
+                            if (success_v?.toInt()==1)
+                            {
+                                Links.snack_bar(this@PromotionDetailActivity,main_layout,response.body()?.message.toString());
+                                move_next_page();
+
+                            }
+                            else {
+                                Links.snack_bar(this@PromotionDetailActivity,main_layout,response.body()?.message.toString())
+                            }
+                        } else {
+                            Links.snack_bar(this@PromotionDetailActivity,main_layout,response.body()?.message.toString())
+                        }
+                    }
+                    override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                        loading_layout.setVisibility(View.GONE)
+                        Links.snack_bar(this@PromotionDetailActivity,main_layout,t.message)
+
+                    }
+                })
+    }
+
+    private fun move_next_page() {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 }

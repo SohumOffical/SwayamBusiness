@@ -38,6 +38,7 @@ class ServicesProviderListAdapter  (private var arrayList: List<ServiceListDatum
         holder.itemView.service_item_rel.setOnClickListener {
             Links.selected_service_id = arrayList.get(position).serviceId
             val intent = Intent(context, MoreSubCatogoryActivity::class.java)
+            intent.putExtra("service_name",""+arrayList.get(position).serviceName)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }

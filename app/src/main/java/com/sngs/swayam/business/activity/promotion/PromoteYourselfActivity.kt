@@ -263,7 +263,6 @@ class PromoteYourselfActivity : AppCompatActivity() {
             }
         }
 
-
         buy_one_get_one_rb_txt.setOnClickListener {
             if(buy_one_get_one_rb_txt.isChecked){
                 price_rb_txt.isChecked = false
@@ -333,8 +332,6 @@ class PromoteYourselfActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(seek: SeekBar) {
             }
         })
-
-
 
     }
 
@@ -444,8 +441,7 @@ class PromoteYourselfActivity : AppCompatActivity() {
         }
     }
 
-    private fun validation_5()
-    {
+    private fun validation_5() {
         if(promo_baner_id.isEmpty()){
             clear_error()
             prom_photo_tl.error = resources.getString(R.string.prom_baner_error)
@@ -729,7 +725,7 @@ class PromoteYourselfActivity : AppCompatActivity() {
 
         loading_layout.setVisibility(View.VISIBLE)
 
-        ServiceCall.callGetCategoryList(this, auth_id, auth_token, Links.User_Type, selected_service_id)
+        ServiceCall.callGetCategoryList(this, auth_id, auth_token, Links.User_Type, selected_service_id,"1")
             .enqueue(object : Callback<GetCategoryListBaseResponse> {
                 override fun onResponse(call: Call<GetCategoryListBaseResponse>, response: Response<GetCategoryListBaseResponse>) {
                     loading_layout.setVisibility(View.GONE)

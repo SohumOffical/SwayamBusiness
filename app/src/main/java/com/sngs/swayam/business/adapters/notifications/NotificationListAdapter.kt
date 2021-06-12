@@ -9,6 +9,8 @@ import com.sngs.swayam.business.R
 import com.sngs.swayam.business.activity.notifications.NotificationActivity
 import com.sngs.swayam.business.network.model.Notification.Notification
 import kotlinx.android.synthetic.main.notification_item_layout.view.*
+import java.text.ParseException
+import java.text.SimpleDateFormat
 
 
 class NotificationListAdapter  (private var arrayList: List<Notification>, private val context: Context) :
@@ -28,7 +30,17 @@ class NotificationListAdapter  (private var arrayList: List<Notification>, priva
 
         holder.itemView.tvTitle.setText(""+arrayList.get(position).notiType)
         holder.itemView.tvSubTitle.setText(""+arrayList.get(position).notiMessage)
-        holder.itemView.tv_date.setText("" + arrayList.get(position).getmNotiDate())
+
+        val date = ""+arrayList.get(position).getmNotiDate()
+        val input = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val output = SimpleDateFormat("dd-MMM-YY   hh:mm aa")
+        try {
+            var oneWayTripDate = input.parse(date)
+            var date_display = output.format(oneWayTripDate);
+            holder.itemView.tv_date.setText(""+date_display)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
 
         if(arrayList.get(position).notiType.equals("Promotion Query")){
             holder.itemView.iv_replay.visibility = View.VISIBLE

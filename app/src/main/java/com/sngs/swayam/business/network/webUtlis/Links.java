@@ -63,6 +63,7 @@ public class Links {
 
     //trancation detail
     public  static  final String getCustomer_Transaction_DetailList = "getCustomerTransactionDetailList.php";
+    public  static  final String getCustomer_Package_DetailList = "getCustomerPackageHistory.php";
 
     //edit profile
     public  static  final String Edit_Profile = "editCustomerProfile.php";
@@ -140,7 +141,7 @@ public class Links {
 
 
     //transcation Detail
-    public static List<TransactionListResult> Transcation_Result = new ArrayList<>();
+    public static List<com.sngs.swayam.business.network.model.CustomerPackages.PackageList> Package_list= new ArrayList<>();
 
     //packge Detail
     public static List<PackageList> PackageList_Result = new ArrayList<>();
@@ -210,6 +211,7 @@ public class Links {
     public static class GetSubCategoryListDetail {
         public static final String Service_Id = "serviceId";
         public static final String Category_Id = "categoryId";
+        public static final String Filter_Type = "isFilter";
     }
 
     public static class CategoryUploadFileDetail {
@@ -243,6 +245,9 @@ public class Links {
         public static final String customer_ProfilePicture= "customerProfilePicture";
     }
 
+    public static class Service_Detail {
+        public static final String Filter_Type = "isFilter";
+    }
 
     public static class AddPromotion {
         public static final String promotionTitle = "promotionTitle";

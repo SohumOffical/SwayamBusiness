@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.mytractions.MyTractionsActivity">
+    tools:context=".activity.promohistory.PromoHistoryActivity">
 
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -33,7 +33,7 @@
             android:layout_marginLeft="@dimen/_15sdp"
             android:singleLine="true"
             android:fontFamily="@font/roboto_medium"
-            android:text="@string/lbl_my_transactions"
+            android:text="@string/lbl_promo_history"
             android:textColor="@color/textHeader"
             android:textSize="@dimen/text_18" />
 

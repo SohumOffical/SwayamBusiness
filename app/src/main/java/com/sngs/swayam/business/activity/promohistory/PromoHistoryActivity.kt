@@ -1,4 +1,4 @@
-package com.sngs.swayam.business.activity.mytractions
+package com.sngs.swayam.business.activity.promohistory
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -8,19 +8,17 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sngs.swayam.business.R
-import com.sngs.swayam.business.adapters.mytractions.MyTractionsAdpater
+import com.sngs.swayam.business.adapters.promohistory.PromoHistoryAdpater
 import com.sngs.swayam.business.network.model.CustomerPackages.CustomerPCKBaseReponse
-import com.sngs.swayam.business.network.model.TranscationDetail.TranscationDetailBaseResponse
 import com.sngs.swayam.business.network.servicecall.ServiceCall
 import com.sngs.swayam.business.network.webUtlis.Links
-import kotlinx.android.synthetic.main.activity_my_tractions.*
-import kotlinx.android.synthetic.main.activity_my_tractions.ivBack
+import kotlinx.android.synthetic.main.activity_promo_history.*
 import kotlinx.android.synthetic.main.loading_layout.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MyTractionsActivity : AppCompatActivity()
+class PromoHistoryActivity : AppCompatActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +27,7 @@ class MyTractionsActivity : AppCompatActivity()
             R.anim.slide_in_right,
             R.anim.slide_out_left
         );
-        setContentView(R.layout.activity_my_tractions)
+        setContentView(R.layout.activity_promo_history)
 
         init()
         click_fun()
@@ -68,22 +66,26 @@ class MyTractionsActivity : AppCompatActivity()
                             if(response.body()!!.packageList!=null)
                             {
                                 Links.Package_list = response.body()!!.packageList
-                                rv_list.adapter = MyTractionsAdpater(this@MyTractionsActivity, Links.Package_list)
-                                Links.snack_bar(this@MyTractionsActivity,main_layout,response.body()?.message.toString())
+                                rv_list.adapter =
+                                    PromoHistoryAdpater(
+                                        this@PromoHistoryActivity,
+                                        Links.Package_list
+                                    )
+                                Links.snack_bar(this@PromoHistoryActivity,main_layout,response.body()?.message.toString())
                             }
                         }
                         else {
                             loading_layout.setVisibility(View.GONE)
-                            Links.snack_bar(this@MyTractionsActivity,main_layout,response.body()?.message.toString())
+                            Links.snack_bar(this@PromoHistoryActivity,main_layout,response.body()?.message.toString())
                         }
                     } else {
                         loading_layout.setVisibility(View.GONE)
-                        Links.snack_bar(this@MyTractionsActivity,main_layout,response.body()?.message.toString())
+                        Links.snack_bar(this@PromoHistoryActivity,main_layout,response.body()?.message.toString())
                     }
                 }
                 override fun onFailure(call: Call<CustomerPCKBaseReponse>, t: Throwable) {
                     loading_layout.setVisibility(View.GONE)
-                    Links.snack_bar(this@MyTractionsActivity,main_layout, t.message.toString())
+                    Links.snack_bar(this@PromoHistoryActivity,main_layout, t.message.toString())
                 }
             })
     }

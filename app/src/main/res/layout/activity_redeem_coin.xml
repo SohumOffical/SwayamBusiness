@@ -211,12 +211,56 @@
 
             </LinearLayout>
 
-            //enter purchase price
+            //enter item name
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="@dimen/_20sdp">
+
+                <TextView
+                    android:id="@+id/enter_item_name_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/lbl_enter_item_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14"
+                    android:layout_marginLeft="@dimen/_15sdp"/>
+
+                //enter item name
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_enter_item_name"
+                    style="@style/txt_ip_layoutbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_item_name"
+                    android:theme="@style/txt_TextInAppearance"
+                    app:errorEnabled="true"
+                    android:fontFamily="@font/roboto_regular">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/enter_item_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:inputType="text"
+                        android:paddingLeft="@dimen/_20sdp"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/drak_blue"
+                        android:theme="@style/txt_EditInAppearance" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            //enter purchase price
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_5sdp">
 
                 <TextView
                     android:id="@+id/original_purchase_price_txt"
@@ -333,56 +377,82 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                //enter OTP
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    //enter OTP
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/otp_txt2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:singleLine="true"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/lbl_enter_otp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_14" />
+
+                        //Mobile
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_OTP"
+                            style="@style/txt_ip_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_otp"
+                            android:theme="@style/txt_TextInAppearance"
+                            app:errorEnabled="true"
+                            android:fontFamily="@font/roboto_regular">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_OTP"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:inputType="number"
+                                android:maxLength="6"
+                                android:text=""
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:singleLine="true"
+                                android:textColor="@color/drak_blue"
+                                android:theme="@style/txt_EditInAppearance" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    //validate button
+                    <Button
+                        android:id="@+id/btnValidate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_btn_shape"
+                        android:layout_below="@+id/tl_employe_code"
+                        android:fontFamily="@font/roboto_medium"
+                        android:layout_marginTop="@dimen/_18sdp"
+                        android:shadowColor="@color/blue"
+                        android:text="@string/lbl_validate"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_14"
+                        android:layout_marginRight="@dimen/_15sdp" />
+
+                </LinearLayout>
+
+                //mobile number
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_marginTop="@dimen/_15sdp">
-
-                    <TextView
-                        android:id="@+id/otp_txt2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_15sdp"
-                        android:singleLine="true"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/lbl_enter_otp"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_14" />
-
-                    //Mobile
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tl_OTP"
-                        style="@style/txt_ip_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/enter_otp"
-                        android:theme="@style/txt_TextInAppearance"
-                        app:errorEnabled="true"
-                        android:fontFamily="@font/roboto_regular">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_OTP"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_regular"
-                            android:inputType="number"
-                            android:maxLength="6"
-                            android:text=""
-                            android:drawablePadding="@dimen/_10sdp"
-                            android:singleLine="true"
-                            android:textColor="@color/drak_blue"
-                            android:theme="@style/txt_EditInAppearance" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="@dimen/_10sdp">
 
                     <TextView
                         android:id="@+id/enter_mobile_number_txt"
@@ -391,7 +461,7 @@
                         android:layout_marginLeft="@dimen/_15sdp"
                         android:singleLine="true"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="@string/lbl_enter_mobile_number"
+                        android:text="@string/lbl_mobile_number_reciver"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_14" />
 
@@ -413,6 +483,7 @@
                             android:fontFamily="@font/roboto_regular"
                             android:inputType="number"
                             android:maxLength="10"
+                            android:focusableInTouchMode="false"
                             android:paddingLeft="@dimen/_20sdp"
                             android:drawablePadding="@dimen/_10sdp"
                             android:drawableLeft="@drawable/ic_phone_call"
@@ -424,23 +495,7 @@
 
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/btnValidate"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_btn_shape"
-                    android:layout_below="@+id/tl_employe_code"
-                    android:fontFamily="@font/roboto_medium"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:shadowColor="@color/blue"
-                    android:text="@string/lbl_validate"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_14"
-                    android:layout_marginLeft="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_15sdp"/>
-
+                //choose_payment
                 <LinearLayout
                     android:id="@+id/choose_payment_method_li"
                     android:layout_width="match_parent"

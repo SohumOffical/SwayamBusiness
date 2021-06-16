@@ -1,4 +1,4 @@
-package com.sngs.swayam.business.adapters.mytractions;
+package com.sngs.swayam.business.adapters.promohistory;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,12 +9,11 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.sngs.swayam.business.R;
 import com.sngs.swayam.business.network.model.CustomerPackages.PackageList;
-import com.sngs.swayam.business.network.model.PromotionList.PromotionListResult;
-import com.sngs.swayam.business.network.model.TranscationDetail.TransactionListResult;
+
 import java.util.List;
 
 
-public class MyTractionsAdpater extends RecyclerView.Adapter<MyTractionsAdpater.MyViewHolder> {
+public class PromoHistoryAdpater extends RecyclerView.Adapter<PromoHistoryAdpater.MyViewHolder> {
 
     List<PackageList> arrayList;
     Context context;
@@ -37,7 +36,7 @@ public class MyTractionsAdpater extends RecyclerView.Adapter<MyTractionsAdpater.
     }
 
 
-    public MyTractionsAdpater(Context context_app, List<PackageList> arrayList) {
+    public PromoHistoryAdpater(Context context_app, List<PackageList> arrayList) {
         this.context = context_app;
         this.arrayList = arrayList;
     }
@@ -45,7 +44,7 @@ public class MyTractionsAdpater extends RecyclerView.Adapter<MyTractionsAdpater.
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_traction_item_layout, parent, false);
+                .inflate(R.layout.promo_history_item_layout, parent, false);
 
         return new MyViewHolder(itemView);
     }

@@ -15,12 +15,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.sngs.swayam.business.users.LoginActivity
 import com.naimee.swayam.utlis.theme3bottomnavigation.BottomNavigation
 import com.sngs.swayam.business.R
-import com.sngs.swayam.business.activity.mytractions.MyTractionsActivity
+import com.sngs.swayam.business.activity.mytransaction.MyTransactionActivity
+import com.sngs.swayam.business.activity.promohistory.PromoHistoryActivity
 import com.sngs.swayam.business.activity.notifications.NotificationActivity
 import com.sngs.swayam.business.activity.onboarding.promos.PromotionDraftActivity
 import com.sngs.swayam.business.activity.onboarding.promos.PromotionManagementActivity
@@ -33,7 +33,6 @@ import com.sngs.swayam.business.network.model.CustomerDetail.CustomerDetailBaseR
 import com.sngs.swayam.business.network.model.ServiceProvider.GetServiceProviderBaseResponse
 import com.sngs.swayam.business.network.servicecall.ServiceCall
 import kotlinx.android.synthetic.main.activity_drawer.*
-import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home.bottomNavigation
 import kotlinx.android.synthetic.main.loading_layout.*
@@ -114,9 +113,15 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-        my_transactions_txt1.setOnClickListener {
+        promo_history_txt1.setOnClickListener {
             drawerlayout.closeDrawer(GravityCompat.START)
-            val intent = Intent(this, MyTractionsActivity::class.java)
+            val intent = Intent(this, PromoHistoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        my_transaction_txt1.setOnClickListener {
+            drawerlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, MyTransactionActivity::class.java)
             startActivity(intent)
         }
 

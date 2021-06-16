@@ -18,6 +18,7 @@ import com.sngs.swayam.business.network.model.Packages.PackageDetail;
 import com.sngs.swayam.business.network.model.Packages.PackageList;
 import com.sngs.swayam.business.network.model.PromoDetail.PromotionListResult;
 import com.sngs.swayam.business.network.model.PromotionBanner.PromotionBannerListResult;
+import com.sngs.swayam.business.network.model.RedeemCoin.PromotionDiscountTransactionListResult;
 import com.sngs.swayam.business.network.model.ServiceProvider.ServiceListDatum;
 import com.sngs.swayam.business.network.model.State.StateListDatum;
 import com.sngs.swayam.business.network.model.SubCategory.SubCategoryListDatum;
@@ -86,6 +87,7 @@ public class Links {
     //Promotaion Purchase
     public  static  final String Promotion_Purchase_Discount = "promotionPurchaseDiscount.php";
     public  static  final String CustomerPaymentMethod = "promotionPurchaseDiscountPaymentMethod.php";
+    public  static  final String Get_CustomerPromotion_DiscountTransactionList = "getCustomerPromotionDiscountTransactionList.php";
 
     public static List<String> services_provider = new ArrayList<>();
     public static List<State_Model> select_state = new ArrayList<>();
@@ -142,6 +144,7 @@ public class Links {
 
     //transcation Detail
     public static List<com.sngs.swayam.business.network.model.CustomerPackages.PackageList> Package_list= new ArrayList<>();
+    public static List<PromotionDiscountTransactionListResult> TransactionList= new ArrayList<>();
 
     //packge Detail
     public static List<PackageList> PackageList_Result = new ArrayList<>();
@@ -311,6 +314,9 @@ public class Links {
         public static final String Customer_ContactNumber = "customerContactNumber";
         public static final String Purchase_DiscountId = "promotionPurchaseDiscountId";
         public static final String Payment_Method = "paymentMethod";
+        public static final String Item_Name = "itemName";
+        public static final String Item_Purchase_Price = "itemPurchasePrice";
+        public static final String Item_Selling_Price = "itemSellingPrice";
     }
 
     public static void snack_bar(Context context, RelativeLayout main_layout, String mes){

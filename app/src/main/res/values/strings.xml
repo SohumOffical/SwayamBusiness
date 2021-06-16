@@ -319,6 +319,7 @@
     <string name="enter_otp">Enter OTP</string>
     <string name="lbl_validate">Validate</string>
     <string name="lbl_enter_mobile_number">Enter Mobile Number</string>
+    <string name="lbl_mobile_number_reciver">Enter Mobile Number to receive payment</string>
     <string name="choose_payment_method">Choose Payment Method</string>
     <string name="phone_pay">Phone Pay</string>
     <string name="g_pay">G Pay</string>
@@ -337,5 +338,8 @@
     <string name="app_wisa_data_usage">App Wisa Data Usage</string>
     <string name="fitness_tracker">Fitness Tracker</string>
     <string name="digital_well_being">Digital Well Being</string>
+    <string name="lbl_enter_item_name">Enter Item Name</string>
+    <string name="enter_item_name">Enter Item Name</string>
+    <string name="error_enter_item_name">Please enter item name</string>
 
 </resources>

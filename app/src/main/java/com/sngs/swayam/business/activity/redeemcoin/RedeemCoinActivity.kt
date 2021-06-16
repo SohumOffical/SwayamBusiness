@@ -10,6 +10,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.sngs.swayam.business.R
 import com.sngs.swayam.business.network.model.BaseResponse
+import com.sngs.swayam.business.network.model.RedeemCoin.CustomerPromotionDiscountTransactionListBaseResponse
 import com.sngs.swayam.business.network.model.RedeemCoinBaseResponse
 import com.sngs.swayam.business.network.model.UserDetail.UserDetailBaseResponse
 import com.sngs.swayam.business.network.model.UserDetail.UserResult
@@ -48,6 +49,11 @@ class RedeemCoinActivity : AppCompatActivity() {
 
     private fun init() {
         click = "0"
+
+        val sharedPreferences: SharedPreferences = getSharedPreferences("Swayam App", Context.MODE_PRIVATE)
+        val number = sharedPreferences.getString("User_no","")
+        et_Mobile_Number.setText(""+number)
+
         set_radio_btn()
     }
 
@@ -151,6 +157,10 @@ class RedeemCoinActivity : AppCompatActivity() {
             clear_error()
             tl_Mobile.error = resources.getString(R.string.mobile_lenght_error)
         }
+        else if(enter_item_name.text.toString().isEmpty()){
+            clear_error()
+            tl_enter_item_name.error = resources.getString(R.string.error_enter_item_name)
+        }
         else if(et_OTP.text.toString().isEmpty()){
             clear_error()
             tl_OTP.error = resources.getString(R.string.pwd_error)
@@ -197,6 +207,7 @@ class RedeemCoinActivity : AppCompatActivity() {
         tl_Mobile.error = null
         tl_OTP.error = null
         tl_Mobile_Number.error = null
+        tl_enter_item_name.error = null
     }
 
     private fun api_calling_for_user_detail() {
@@ -365,7 +376,8 @@ class RedeemCoinActivity : AppCompatActivity() {
 
         ServiceCall.callPromotionPurchaseDiscount(this, auth_id, auth_token, Links.User_Type, user_id,
             et_Mobile.text.toString(),et_OTP.text.toString(),max_discount_value_txt.text.toString(),
-                et_Mobile_Number.text.toString())
+            et_Mobile_Number.text.toString(),enter_item_name.text.toString(),original_purchase_price.text.toString(),
+            actual_selling_price_value_txt.text.toString())
             .enqueue(object : Callback<RedeemCoinBaseResponse> {
                 override fun onResponse(call: Call<RedeemCoinBaseResponse>, response: Response<RedeemCoinBaseResponse>) {
                     loading_layout.setVisibility(View.GONE)
@@ -426,5 +438,40 @@ class RedeemCoinActivity : AppCompatActivity() {
 
     fun withDelay(delay: Long = 1000, block: () -> Unit) {
         Handler().postDelayed(Runnable(block), delay)
+    }
+
+    private fun api_calling_for_redeemcoin_transaction() {
+
+        val sharedPreferences: SharedPreferences = getSharedPreferences("Swayam App", Context.MODE_PRIVATE)
+        val auth_id = sharedPreferences.getString("Auth_ID","")
+        val auth_token = sharedPreferences.getString("Auth_Token","")
+
+        loading_layout.setVisibility(View.VISIBLE)
+
+        ServiceCall.callCustomerPromotionDiscountTransactionList(this, auth_id, auth_token, Links.User_Type)
+                .enqueue(object : Callback<CustomerPromotionDiscountTransactionListBaseResponse> {
+                    override fun onResponse(call: Call<CustomerPromotionDiscountTransactionListBaseResponse>, response: Response<CustomerPromotionDiscountTransactionListBaseResponse>) {
+                        loading_layout.setVisibility(View.GONE)
+                        if (response.isSuccessful()) {
+                            val success_v = response.body()?.success
+                            if (success_v?.toInt()==1) {
+                                Links.snack_bar(this@RedeemCoinActivity,main_layout,response.body()?.message.toString())
+                                withDelay(1500){
+                                    finish()
+                                }
+                            }
+                            else {
+                                Links.snack_bar(this@RedeemCoinActivity,main_layout,response.body()?.message.toString())
+                            }
+                        } else {
+                            Links.snack_bar(this@RedeemCoinActivity,main_layout,response.body()?.message.toString())
+                        }
+                    }
+                    override fun onFailure(call: Call<CustomerPromotionDiscountTransactionListBaseResponse>, t: Throwable) {
+                        loading_layout.setVisibility(View.GONE)
+                        Links.snack_bar(this@RedeemCoinActivity,main_layout,t.message.toString())
+                    }
+                })
+
     }
 }

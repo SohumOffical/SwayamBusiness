@@ -155,17 +155,30 @@
 
                 </LinearLayout>
 
-                //My Transactions
+                //promo_history
                 <LinearLayout
-                    android:id="@+id/my_transactions_li1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/my_transactions_txt1"
+                        android:id="@+id/promo_history_txt1"
                         android:text="@string/lbl_promo_history"
                         android:drawableLeft="@drawable/ic_wallet"
+                        style="@style/MenuOption" />
+
+                </LinearLayout>
+
+                //My Transactions
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/my_transaction_txt1"
+                        android:text="@string/lbl_my_transactions"
+                        android:drawableLeft="@drawable/notes"
                         style="@style/MenuOption" />
 
                 </LinearLayout>
@@ -180,7 +193,7 @@
                     <TextView
                         android:id="@+id/redeem_coin_txt1"
                         android:text="@string/lbl_redeem_coin"
-                        android:drawableLeft="@drawable/ic_wallet"
+                        android:drawableLeft="@drawable/rupee"
                         style="@style/MenuOption" />
 
                 </LinearLayout>
@@ -220,7 +233,8 @@
                     android:id="@+id/share_app_li1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/share_app_txt1"

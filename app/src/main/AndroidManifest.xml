@@ -19,12 +19,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name=".activity.redeemcoin.RedeemCoinActivity"></activity>
+        <activity android:name=".activity.mytransaction.MyTransactionActivity"></activity>
+        <activity android:name=".activity.redeemcoin.RedeemCoinActivity" />
         <activity android:name=".activity.onboarding.promos.PromotionDraftActivity" />
         <activity android:name=".activity.home.AboutUsActivity" />
         <activity android:name=".activity.home.ContactusActivity" />
         <activity android:name=".activity.packages.ListPackagesActivity" />
-        <activity android:name=".activity.mytractions.MyTractionsActivity" />
+        <activity android:name=".activity.promohistory.PromoHistoryActivity" />
         <activity android:name=".activity.promotion.PromotionBannerActivity" />
         <activity android:name=".activity.promotion.PromoteYourselfActivity" />
         <activity

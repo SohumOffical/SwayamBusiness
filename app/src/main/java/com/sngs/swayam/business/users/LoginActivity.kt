@@ -215,7 +215,6 @@ class LoginActivity : AppCompatActivity() {
 
                         if (success_v?.toInt()==1)
                         {
-
                             if(response.body()?.userData!!.otp!=null){
                                 otp = response.body()?.userData!!.otp.toString()
                                 step_compeleted = response.body()?.userData!!.stepCompleted.toString()

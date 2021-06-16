@@ -7,6 +7,7 @@ import com.sngs.swayam.business.network.model.PromoDetail.PromoDetailBaseRespons
 import com.sngs.swayam.business.network.model.PromotionBanner.PromotionBannerBaseResponse;
 import com.sngs.swayam.business.network.model.PromotionDetail.GetPromotionDetailBaseResponse;
 import com.sngs.swayam.business.network.model.PromotionList.GetCustomerPromotionListBaseResponse;
+import com.sngs.swayam.business.network.model.RedeemCoin.CustomerPromotionDiscountTransactionListBaseResponse;
 import com.sngs.swayam.business.network.model.RedeemCoinBaseResponse;
 import com.sngs.swayam.business.network.model.TranscationDetail.TranscationDetailBaseResponse;
 import com.sngs.swayam.business.network.model.UserDetail.UserDetailBaseResponse;
@@ -243,6 +244,10 @@ public interface APIInterface
     @POST(Links.CustomerPaymentMethod)
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     Call<BaseResponse> postCustomerPaymentMethod(@Body HashMap<String, String> mBodyMap);
+
+    @POST(Links.Get_CustomerPromotion_DiscountTransactionList)
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    Call<CustomerPromotionDiscountTransactionListBaseResponse> postGetCustomerPromotionDiscountTransactionList(@Body HashMap<String, String> mBodyMap);
 
 
 }

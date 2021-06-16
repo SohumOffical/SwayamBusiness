@@ -9,17 +9,12 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sngs.swayam.business.R
-import com.sngs.swayam.business.adapters.mytractions.MyTractionsAdpater
 import com.sngs.swayam.business.adapters.packages.SwayamPackagesListAdapter
 import com.sngs.swayam.business.network.model.BaseResponse
 import com.sngs.swayam.business.network.model.Packages.GetPackageListBaseResponse
-import com.sngs.swayam.business.network.model.TranscationDetail.TranscationDetailBaseResponse
 import com.sngs.swayam.business.network.servicecall.ServiceCall
 import com.sngs.swayam.business.network.webUtlis.Links
 import kotlinx.android.synthetic.main.activity_list_packages.*
-import kotlinx.android.synthetic.main.activity_my_tractions.*
-import kotlinx.android.synthetic.main.activity_my_tractions.ivBack
-import kotlinx.android.synthetic.main.activity_my_tractions.main_layout
 import kotlinx.android.synthetic.main.loading_layout.*
 import retrofit2.Call
 import retrofit2.Callback

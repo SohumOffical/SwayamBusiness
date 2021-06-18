@@ -262,7 +262,7 @@ class RedeemCoinActivity : AppCompatActivity() {
                 Links.snack_bar(this@RedeemCoinActivity,main_layout,"Minimum need is 20 coins")
             }
             else{
-                max_discount_value_txt.text = mini_balance.toString()
+                max_discount_value_txt.text = coin_value.toString()
             }
         }
         else   if(user_current_level_value_txt.text.toString().equals("Gold")){
@@ -278,7 +278,7 @@ class RedeemCoinActivity : AppCompatActivity() {
                 Links.snack_bar(this@RedeemCoinActivity,main_layout,"Minimum need is 20 coins")
             }
             else{
-                max_discount_value_txt.text = mini_balance.toString()
+                max_discount_value_txt.text = coin_value.toString()
             }
         }
         else  {
@@ -294,7 +294,7 @@ class RedeemCoinActivity : AppCompatActivity() {
                 Links.snack_bar(this@RedeemCoinActivity,main_layout,"Minimum need is 20 coins")
             }
             else{
-                max_discount_value_txt.text = mini_balance.toString()
+                max_discount_value_txt.text = coin_value.toString()
             }
         }
 
